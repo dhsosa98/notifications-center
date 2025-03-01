@@ -13,7 +13,7 @@ import notificationsProcessor from "./NotificationsProcessor.js";
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil(notificationsProcessor.process(env));
-  },
+  }
 	// async fetch(event, env, ctx) {
 	// 	return await notificationsProcessor.process(env);
 	// }

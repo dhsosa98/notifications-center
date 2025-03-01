@@ -22,10 +22,12 @@ const process = async (env) => {
 							await sendNotification(env, notification, device.fdcToken);
 					}
 					await notificationRepository.updateSentAt(env, notification.notificationId);
+					await notificationRepository.createUserNotification(env, [userId, notification.notificationId]);
 					continue;
 			}
 			await sendNotification(env, notification, '');
 			await notificationRepository.updateSentAt(env, notification.notificationId);
+			await notificationRepository.createUserNotification(env, [userId, notification.notificationId]);
 	}
 	return new Response('Notifications processed', { status: 200 });
 }
